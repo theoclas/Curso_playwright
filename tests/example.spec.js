@@ -1,0 +1,41 @@
+import { test, expect } from '@playwright/test';
+
+test('test', async ({ page }) => {
+  await page.locator('body').click();
+  await page.getByRole('textbox', { name: 'Número de usuario' }).click();
+  await page.getByRole('textbox', { name: 'Número de usuario' }).click();
+  await page.getByRole('textbox', { name: 'Número de usuario' }).fill('83955');
+  await page.getByPlaceholder('Contraseña').click();
+  await page.getByPlaceholder('Contraseña').fill('wX2*dQ3*cS');
+  await page.getByRole('button', { name: 'Iniciar sesión' }).click();
+  await page.goto('https://annamineria.anm.gov.co/sigm/index.html#/extDashboard');
+  await page.getByRole('link', { name: ' Solicitudes ' }).click();
+  await page.getByRole('link', { name: 'Radicar solicitud de propuesta de contrato de concesión', exact: true }).click();
+  await page.getByLabel('Solicitante:').click();
+  await page.getByLabel('Solicitante:').click();
+
+  await page.getByLabel('Solicitante:').fill('');
+  await page.getByLabel('Solicitante:').fill('76966');
+  await page.getByRole('link', { name: 'COLLECTIVE MINING (BERMUDA)' }).click();
+  await page.getByRole('button', { name: 'Continuar ' }).click();
+  await page.getByText('Seleccionar', { exact: true }).click();
+  await page.getByRole('menuitem', { name: 'CALCITA' }).click();
+  await page.getByRole('menuitem', { name: 'PIZARRA' }).click();
+  await page.getByRole('menuitem', { name: 'CONCENTRADOS MINERALES DE' }).click();
+  await page.getByRole('menuitem', { name: 'MINERALES DE PLOMO Y SUS' }).click();
+  await page.getByText('Marcado').click();
+  await page.getByLabel('Área de concesión:').selectOption('O');
+  await page.getByRole('link', { name: ' Detalles del área' }).click();
+  await page.getByLabel('Seleccionar el área de interé').selectOption('2');
+  await page.getByPlaceholder('Ingresar celdas').click();
+  await page.getByPlaceholder('Ingresar celdas').fill('18N05A24P09F, 18N05A24P08U, 18N05A24P04V, 18N05A24P09L, 18N05A24P09B, 18N05A24P04R, 18N05A24P04W, 18N05A24P09A, 18N05A24P04Q, 18N05A24P09R, 18N05A24P09K, 18N05A24P09G, 18N05A24P09Q');
+  await page.getByRole('button', { name: 'Continuar ' }).click();
+  await page.locator('#mapSelectButtonId').click();
+  await page.getByText('Visor de mapa Geocortex').contentFrame().getByRole('button', { name: 'Herramientas', exact: true }).click();
+  await page.getByText('Visor de mapa Geocortex').contentFrame().getByLabel('Acceder herramientas adicionales en Identificar multi-herramienta').click();
+  await page.getByText('Visor de mapa Geocortex').contentFrame().getByRole('button', { name: 'Herramientas Mano alzada' }).click();
+  await page.getByText('Visor de mapa Geocortex').contentFrame().locator('#map_gc').click();
+  await page.getByText('Visor de mapa Geocortex').contentFrame().locator('#map_gc').click();
+  await page.getByText('Visor de mapa Geocortex').contentFrame().locator('#map_gc').click();
+  await page.getByText('Visor de mapa Geocortex').contentFrame().locator('#map_gc').click();
+});
